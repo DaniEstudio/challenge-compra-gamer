@@ -1,3 +1,3 @@
-<div class="list" *ngIf="productList">
-  <app-card *ngFor="let product of productList" [product]="product"></app-card>
+<div id="product-list" *ngIf="filteredProductList">
+  <app-card *ngFor="let product of filteredProductList" [product]="product"></app-card>
 </div>
