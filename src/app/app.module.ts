@@ -7,8 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { CardComponent } from './shared/components/card/card.component';
 import { MaterialModule } from './material.module';
-import { ProductListComponent } from './components/product-list/product-list.component';
-
+import { ProductListComponent } from './product-list/component/product-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     SharedModule,
     MaterialModule
   ],
