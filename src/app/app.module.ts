@@ -11,14 +11,20 @@ import { NavbarComponent } from './navbar/component/navbar.component';
 import { ProductListComponent } from './product-list/component/product-list.component';
 import { CardComponent } from './shared/card/component/card.component';
 import { AlphabeticalOrderPipe } from './shared/pipe/alphabetical-order.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SearchBarComponent } from './shared/search-bar/component/search-bar.component';
+import { GridComponent } from './grid/grid.component';
+import { ProductSearchService } from './shared/service/product-search.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    GridComponent,
     ProductListComponent,
     CardComponent,
     AlphabeticalOrderPipe,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +32,10 @@ import { AlphabeticalOrderPipe } from './shared/pipe/alphabetical-order.pipe';
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ProductSearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

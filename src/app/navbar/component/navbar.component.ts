@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavbarService } from '../service/navbar.service';
 import { CategoryModel } from '../model/category.model';
 import { CategoryFilterService } from 'src/app/shared/service/category-filter.service';
-import { MatExpansionPanel } from '@angular/material/expansion';
+import { ProductSearchService } from '../../shared/service/product-search.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,7 +16,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private navBarService: NavbarService,
-    private categoryFilterService: CategoryFilterService
+    private categoryFilterService: CategoryFilterService,
+    private productSearchService: ProductSearchService
   ) { }
 
   ngOnInit(): void {
@@ -26,20 +27,25 @@ export class NavbarComponent implements OnInit {
   private fetchCategoriestData(): void {
     this.navBarService.getProductData().subscribe((responseList: CategoryModel[]) => {
       this.categoryList = responseList;
-      console.table(responseList);
     });
   }
 
   resetFilter(): void {
     this.categoryFilterService.setGroupId(null);
     this.isExpanded = false;
+    this.resetSearchBar();
   }
 
   onCategoryClick(groupId: number): void {
     this.categoryFilterService.setGroupId(groupId);
+    this.resetSearchBar();
   }
 
   toggleExpandable(): void {
     this.isExpanded = !this.isExpanded;
+  }
+
+  resetSearchBar(): void{
+    this.productSearchService.setSearchTerm('');
   }
 }
