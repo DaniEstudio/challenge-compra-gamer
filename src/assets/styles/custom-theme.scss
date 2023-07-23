@@ -4,7 +4,7 @@
 
 $primary-color: (
   200: #FD7435,
-  500: #FD590D, //Color base
+  500: #FD590D,
   700: #CA4102,
   contrast: (
     200: #f6f6f6,
@@ -35,15 +35,15 @@ $warn-color: (
   )
 );
 
-$primary: mat-palette($primary-color);
-$accent: mat-palette($accent-color);
-$warn: mat-palette($warn-color);
+$primary-color: mat-palette($primary-color);
+$accent-color: mat-palette($accent-color);
+$warn-color: mat-palette($warn-color);
 
 $light-theme: mat-light-theme((
   color: (
-    primary: $primary,
-    accent: $accent,
-    warn: $warn
+    primary: $primary-color,
+    accent: $accent-color,
+    warn: $warn-color
   )
 ));
 

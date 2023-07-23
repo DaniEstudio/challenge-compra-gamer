@@ -2,3 +2,38 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+$contrast-d: #444;
+$contrast-l: #fdfdfd;
+$primary: #FD590D;
+$accent: #25B3A0;
+$warn: #CB0A00;
+
+.color-accent {
+  color: $accent;
+}
+
+.color-primary {
+  color: $primary;
+}
+
+.color-warn {
+  color: $warn;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 8px 11px 1px rgba(0,0,0,.1), 0 3px 14px 2px rgba(0,0,0,.1), 0 2px 0 -3px rgba(0,0,0,.1);
+  z-index: 2;
+}
+
+.txt-center {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
