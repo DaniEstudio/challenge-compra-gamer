@@ -4,8 +4,9 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 $contrast-d: #444;
-$contrast-l: #fdfdfd;
+$contrast-l: #f5f3f3;
 $primary: #FD590D;
+$primary-75: #fd590ddc;
 $accent: #25B3A0;
 $warn: #CB0A00;
 
@@ -21,13 +22,17 @@ $warn: #CB0A00;
   color: $warn;
 }
 
-.pointer {
-  cursor: pointer;
+.bg-primary {
+  background:$primary-75;
+  color: $contrast-l;
 }
 
-.card:hover {
-  box-shadow: 0 8px 11px 1px rgba(0,0,0,.1), 0 3px 14px 2px rgba(0,0,0,.1), 0 2px 0 -3px rgba(0,0,0,.1);
-  z-index: 2;
+h1,h2,h3,h4,h5,h6 {
+  color: $contrast-d;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .txt-center {

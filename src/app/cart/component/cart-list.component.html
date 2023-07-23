@@ -1,0 +1,4 @@
+<div *ngIf="cartItems">
+  <app-card *ngFor="let cartItem of cartItems" [product]="cartItem.product" [showAddToCartButton]="false"></app-card>
+</div>
+
