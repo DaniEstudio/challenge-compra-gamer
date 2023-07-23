@@ -1,3 +1,4 @@
+<app-hero></app-hero>
 <div id="product-list" *ngIf="filteredProductList">
-  <app-card *ngFor="let product of filteredProductList" [product]="product"></app-card>
+  <app-card *ngFor="let product of filteredProductList" [product]="product" [quantity]="cartItemCount[product.id_producto]"></app-card>
 </div>
