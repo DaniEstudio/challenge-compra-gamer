@@ -3,6 +3,8 @@ import { NavbarService } from '../service/navbar.service';
 import { CategoryModel } from '../model/category.model';
 import { CategoryFilterService } from 'src/app/shared/service/category-filter.service';
 import { ProductSearchService } from '../../shared/service/product-search.service';
+import { NavigationStart, Router } from '@angular/router';
+import { CartService } from 'src/app/cart/service/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,19 +12,32 @@ import { ProductSearchService } from '../../shared/service/product-search.servic
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-
+  public cartItemCount = 0;
   public isExpanded: boolean = false;
   public categoryList: CategoryModel[];
 
   constructor(
     private navBarService: NavbarService,
     private categoryFilterService: CategoryFilterService,
-    private productSearchService: ProductSearchService
+    private productSearchService: ProductSearchService,
+    private router: Router,
+    private cartService: CartService,
   ) { }
 
   ngOnInit(): void {
     this.fetchCategoriestData();
+
+    this.cartService.getCartItemCount().subscribe(count => {
+      this.cartItemCount = count;
+    });
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.isExpanded = false;
+      }
+    });
   }
+
 
   private fetchCategoriestData(): void {
     this.navBarService.getProductData().subscribe((responseList: CategoryModel[]) => {

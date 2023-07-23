@@ -1,18 +1,20 @@
-<mat-toolbar class="display-flex-row" color="accent">
-  <button mat-button (click)="resetFilter()">Productos</button>
-  <button mat-button (click)="toggleExpandable()">Categorías</button>
-  <button mat-button>Armá tu PC</button>
-  <button mat-button>Ofertas!</button>
-  <button mat-button>Ayuda</button>
-</mat-toolbar>
+<div id="navbar">
+  <mat-toolbar class="display-flex-row" color="accent">
+    <img alt="Logo Compra Gamer" class="pointer" (click)="resetFilter()" src="https://compragamer.net/assets/img/logo-fix.png">
+    <a mat-button (click)="toggleExpandable()" routerLink="/product">Productos</a>
+    <a mat-button routerLink="#">Armá tu PC</a>
+    <a mat-button routerLink="#">Ofertas!</a>
+    <a mat-button routerLink="#">Ayuda</a>
+    <a mat-icon-button aria-label="Example icon button with a vertical three dot icon" routerLink="/cart">
+      <mat-icon matBadge="{{ cartItemCount }}" matBadgeColor="warn">shopping_cart</mat-icon>
+    </a>
+  </mat-toolbar>
 
-<mat-expansion-panel [expanded]="isExpanded">
-  <div class="display-flex-row">
-    <button mat-button
-            *ngFor="let category of categoryList | order"
-            (click)="onCategoryClick(category.id)">
-      {{ category.nombre }}
-    </button>
-  </div>
-</mat-expansion-panel>
-
+  <mat-expansion-panel [expanded]="isExpanded">
+    <div class="display-flex-row">
+      <button mat-button *ngFor="let category of categoryList | order" (click)="onCategoryClick(category.id)">
+        {{ category.nombre }}
+      </button>
+    </div>
+  </mat-expansion-panel>
+</div>
