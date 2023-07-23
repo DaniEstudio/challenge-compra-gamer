@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryModel } from '../model/category.model';
 import { CategoryFilterService } from 'src/app/shared/service/category-filter.service';
-import { ProductSearchService } from '../../shared/service/product-search.service';
 import { NavigationStart, Router } from '@angular/router';
-import { CartService } from 'src/app/cart/service/cart.service';
+import { CartService } from 'src/app/shared/service/cart.service';
 import { CategoryService } from 'src/app/shared/service/category.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+  animations: [
+    trigger('iconAnimation', [
+      state('collapsed', style({ opacity: 1, transform: 'rotate(0)' })),
+      state('expanded', style({ opacity: 1, transform: 'rotate(-180deg)' })),
+      transition('collapsed <=> expanded', animate('0.3s ease-in-out')),
+    ]),
+  ],
 })
 export class NavbarComponent implements OnInit {
   public cartItemCount = 0;
@@ -19,15 +26,14 @@ export class NavbarComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private categoryFilterService: CategoryFilterService,
-    private productSearchService: ProductSearchService,
     private router: Router,
-    private cartService: CartService,
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
     this.fetchCategoriestData();
 
-    this.cartService.getCartItemCount().subscribe(count => {
+    this.cartService.getTotalCartItems().subscribe(count => {
       this.cartItemCount = count;
     });
 
@@ -46,20 +52,16 @@ export class NavbarComponent implements OnInit {
 
   resetFilter(): void {
     this.categoryFilterService.setGroupId(null);
+    this.categoryService.setCategoryImgURL(null);
     this.isExpanded = false;
-    this.resetSearchBar();
   }
 
-  onCategoryClick(groupId: number): void {
+  onCategoryClick(groupId: number, categoryImgName: string): void {
     this.categoryFilterService.setGroupId(groupId);
-    this.resetSearchBar();
+    this.categoryService.setCategoryImgURL(categoryImgName);
   }
 
   toggleExpandable(): void {
     this.isExpanded = !this.isExpanded;
-  }
-
-  resetSearchBar(): void{
-    this.productSearchService.setSearchTerm('');
   }
 }

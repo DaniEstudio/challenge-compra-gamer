@@ -12,10 +12,12 @@ import { ProductListComponent } from './product-list/component/product-list.comp
 import { CardComponent } from './shared/card/component/card.component';
 import { AlphabeticalOrderPipe } from './shared/pipe/alphabetical-order.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SearchBarComponent } from './shared/search-bar/component/search-bar.component';
-import { ProductSearchService } from './shared/service/product-search.service';
 import { CartListComponent } from './cart/component/cart-list.component';
 import { LandingComponent } from './landing/landing.component';
+import { HeroComponent } from './shared/hero/component/hero.component';
+import { MedImagePipe } from './shared/pipe/med-image.pipe';
+import { PriceFormatPipe } from './shared/pipe/price-format.pipe';
+import { NotFoundComponent } from './shared/not-found/component/not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,10 @@ import { LandingComponent } from './landing/landing.component';
     CartListComponent,
     CardComponent,
     AlphabeticalOrderPipe,
-    SearchBarComponent
+    MedImagePipe,
+    PriceFormatPipe,
+    HeroComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,7 @@ import { LandingComponent } from './landing/landing.component';
     MaterialModule,
     ReactiveFormsModule
   ],
-  providers: [ProductSearchService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
