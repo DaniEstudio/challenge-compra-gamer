@@ -11,4 +11,5 @@ export interface ProductModel {
   stock: number;
   garantia: number;
   iva: number;
+  categoryName?: string;
 }

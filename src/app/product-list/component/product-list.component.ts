@@ -3,6 +3,8 @@ import { ProductListService } from '../service/product-list.service';
 import { ProductModel } from '../model/product.model';
 import { CategoryFilterService } from 'src/app/shared/service/category-filter.service';
 import { ProductSearchService } from 'src/app/shared/service/product-search.service';
+import { CategoryService } from 'src/app/shared/service/category.service';
+import { CategoryModel } from 'src/app/navbar/model/category.model';
 
 @Component({
   selector: 'app-product-list',
@@ -17,6 +19,7 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productListService: ProductListService,
+    private categoryService: CategoryService,
     private productSearchService: ProductSearchService,
     private categoryFilterService: CategoryFilterService
   ) { }
@@ -31,8 +34,25 @@ export class ProductListComponent implements OnInit {
     this.productListService.getProductData().subscribe((responseList: ProductModel[]) => {
       this.productList = responseList;
       this.filteredProductList = responseList;
+      console.table(responseList);
+      this.fetchCategory(responseList);
       this.validateData();
       this.filterProducts();
+    });
+  }
+
+  private fetchCategory(productList: ProductModel[]): void {
+    this.categoryService.getCategoryData().subscribe((responseList: CategoryModel[]) => {
+      // Create a map of categoryId to categoryName for easy lookup
+      const categoryMap: { [key: number]: string } = {};
+      responseList.forEach((category) => {
+        categoryMap[category.id] = category.nombre;
+      });
+
+      // Assign the categoryName to each product in the productList
+      productList.forEach((product) => {
+        product.categoryName = categoryMap[product.id_subcategoria] || 'Unknown Category';
+      });
     });
   }
 

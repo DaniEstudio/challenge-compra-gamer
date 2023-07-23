@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NavbarService } from '../service/navbar.service';
 import { CategoryModel } from '../model/category.model';
 import { CategoryFilterService } from 'src/app/shared/service/category-filter.service';
 import { ProductSearchService } from '../../shared/service/product-search.service';
 import { NavigationStart, Router } from '@angular/router';
 import { CartService } from 'src/app/cart/service/cart.service';
+import { CategoryService } from 'src/app/shared/service/category.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   public categoryList: CategoryModel[];
 
   constructor(
-    private navBarService: NavbarService,
+    private categoryService: CategoryService,
     private categoryFilterService: CategoryFilterService,
     private productSearchService: ProductSearchService,
     private router: Router,
@@ -38,9 +38,8 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-
   private fetchCategoriestData(): void {
-    this.navBarService.getProductData().subscribe((responseList: CategoryModel[]) => {
+    this.categoryService.getCategoryData().subscribe((responseList: CategoryModel[]) => {
       this.categoryList = responseList;
     });
   }
