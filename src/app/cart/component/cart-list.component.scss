@@ -1,0 +1,15 @@
+.container {
+  margin: 1rem auto;
+  max-width: 800px;
+
+  span {
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+.a-position {
+  position: relative;
+  top: 45px;
+  z-index: 2;
+  left: 740px;
+}
