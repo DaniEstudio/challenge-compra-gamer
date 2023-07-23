@@ -1,10 +1,14 @@
 <div id="navbar">
-  <mat-toolbar class="display-flex-row" color="accent">
-    <img alt="Logo Compra Gamer" class="pointer" (click)="resetFilter()" src="https://compragamer.net/assets/img/logo-fix.png">
-    <a mat-button (click)="toggleExpandable()" routerLink="/product">Productos</a>
-    <a mat-button routerLink="#">Armá tu PC</a>
-    <a mat-button routerLink="#">Ofertas!</a>
-    <a mat-button routerLink="#">Ayuda</a>
+  <mat-toolbar class="display-flex-row mat-elevation-z1" color="primary">
+    <img alt="Logo Compra Gamer" class="pointer" routerLink="/product" (click)="resetFilter()" src="https://compragamer.net/assets/img/logo-fix.png">
+    <a mat-button (click)="toggleExpandable()" routerLink="/product">Productos
+      <mat-icon [@iconAnimation]="isExpanded ? 'expanded' : 'collapsed'">
+        {{ 'keyboard_arrow_down' }}
+      </mat-icon>
+    </a>
+    <a mat-button routerLink="soon">Armá tu PC</a>
+    <a mat-button routerLink="soon">Ofertas!</a>
+    <a mat-button routerLink="soon">Ayuda</a>
     <a mat-icon-button aria-label="Example icon button with a vertical three dot icon" routerLink="/cart">
       <mat-icon matBadge="{{ cartItemCount }}" matBadgeColor="warn">shopping_cart</mat-icon>
     </a>
@@ -12,7 +16,7 @@
 
   <mat-expansion-panel [expanded]="isExpanded">
     <div class="display-flex-row">
-      <button mat-button *ngFor="let category of categoryList | order" (click)="onCategoryClick(category.id)">
+      <button mat-button *ngFor="let category of categoryList | order" (click)="onCategoryClick(category.id, category.imagen)">
         {{ category.nombre }}
       </button>
     </div>
