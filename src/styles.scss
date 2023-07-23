@@ -1,7 +1,7 @@
 @import 'assets/styles/custom-theme.scss';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #fcfcfc;}
 
 $contrast-d: #444;
 $contrast-l: #f5f3f3;
@@ -31,8 +31,16 @@ h1,h2,h3,h4,h5,h6 {
   color: $contrast-d;
 }
 
+.text-mute {
+  color: rgba(131, 131, 131, 0.904);
+}
+
 .pointer {
   cursor: pointer;
+}
+
+.no-select {
+  cursor: default;
 }
 
 .txt-center {
