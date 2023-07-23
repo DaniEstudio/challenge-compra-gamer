@@ -1,13 +1,36 @@
-<mat-card>
-  <mat-card-header>
-    <div mat-card-avatar class="card-avatar"></div>
-    <mat-card-title>{{ product.nombre }}</mat-card-title>
-    <mat-card-subtitle>{{ product.precio }}</mat-card-subtitle>
-  </mat-card-header>
+<!-- Nombre, imagen, precio (con el formateo a pesos correspondiente), subcategoría a la
+cual pertenece y botón para agregar al carro de compras. -->
+<p *ngIf="quantity > 0">Quantity: {{ quantity }}</p>
+<mat-card class="card mat-elevation-z2 txt-center">
+  <!-- SUBCATEGORÍA  -->
+  <div class="cat-info-position">
+    <span class="text-mute no-select" selected> {{product.categoryName}} </span>
+  </div>
+
+  <!-- BOTÓN CARRITO -->
+  <div class="cart-position">
+    <button class="bg-primary mat-elevation-z1" *ngIf="showAddToCartButton" (click)="addToCart()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>add_shopping_cart</mat-icon>
+    </button>
+  </div>
+  <!-- IMAGEN PRODUCTO -->
+  <div class="header-img pointer">
+    <img [src]="product.imagenes[0].nombre | medImage"
+    class="img-fluid p-4 mh-100" alt="">
+  </div>
   <mat-card-content>
-    contenido
+    <!-- PRECIO -->
+    <div class="flex-row">
+      <h2 class="price">{{ product.precio | priceFormat}} </h2>
+      <span class="color-accent">12 Cuotas sin interes</span>
+    </div>
+    <!-- TITULO  -->
+    <h4 class="card-title truncate-lines pointer">
+     {{ product.nombre }}
+    </h4>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button></button>
+
   </mat-card-actions>
+  <!--Card content-->
 </mat-card>

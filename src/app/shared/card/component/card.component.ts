@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CartService } from 'src/app/shared/service/cart.service';
 import { ProductModel } from 'src/app/product-list/model/product.model';
 
 @Component({
@@ -8,10 +9,19 @@ import { ProductModel } from 'src/app/product-list/model/product.model';
 })
 export class CardComponent implements OnInit {
   @Input() product: ProductModel;
+  @Input() quantity: number;
+  @Input() showAddToCartButton: boolean = true;
+  public imgUrl: string = '';
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  addToCart() {
+    this.cartService.addToCart(this.product);
   }
+
+
+
 
 }

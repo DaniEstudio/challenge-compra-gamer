@@ -1,1 +1,59 @@
+.card {
+  min-height: 275px;
+  max-height: 275px;
+}
+.card:hover {
+  -webkit-box-shadow: 0 7px 11px 0 rgba(0,0,0,.1), 0 2px 4px 0 rgba(0,0,0,.1);
+  box-shadow: 0 7px 11px 0 rgba(0,0,0,.1), 0 2px 4px 0 rgba(0,0,0,.1);
+}
 
+.cat-info-position {
+  position: absolute;
+  top: 5px;
+  left: 10px
+}
+
+.cart-position {
+  position: absolute;
+  right: 10px;
+  bottom: 115px;
+}
+
+mat-icon{
+  font-size: 18px;
+  border-radius: 25px;
+}
+
+.header-img {
+  width: calc(100% + 32px);
+  margin: 14px -16px 16px -16px;
+  border-bottom: solid .5px #e6e6e6;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.truncate-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to display */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price {
+  font-size: 25px;
+  font-weight: 500;
+  text-align: start;
+  margin: 5px 10px;
+}
