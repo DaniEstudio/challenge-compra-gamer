@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -17,6 +17,8 @@ import { HeroComponent } from './shared/hero/component/hero.component';
 import { MedImagePipe } from './shared/pipe/med-image.pipe';
 import { PriceFormatPipe } from './shared/pipe/price-format.pipe';
 import { NotFoundComponent } from './shared/not-found/component/not-found.component';
+import { GenericInterceptor } from './shared/interceptor/http-interceptor';
+import { ProductListService } from './product-list/service/product-list.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,14 @@ import { NotFoundComponent } from './shared/not-found/component/not-found.compon
     MaterialModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    ProductListService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: GenericInterceptor,
+    multi: true,
+  },
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
