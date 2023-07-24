@@ -7,6 +7,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -17,7 +20,10 @@ import { MatChipsModule } from '@angular/material/chips';
     MatCardModule,
     MatIconModule,
     MatBadgeModule,
-    MatChipsModule
+    MatChipsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule
   ],
   exports: [
     MatToolbarModule,
@@ -27,7 +33,10 @@ import { MatChipsModule } from '@angular/material/chips';
     MatCardModule,
     MatIconModule,
     MatBadgeModule,
-    MatChipsModule
+    MatChipsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule {}
