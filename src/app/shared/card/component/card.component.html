@@ -19,6 +19,10 @@ cual pertenece y botón para agregar al carro de compras. -->
     <img [src]="product.imagenes[0].nombre | medImage"
     class="img-fluid p-4 mh-100" alt="">
   </div>
+  <!-- CANTIDAD EN STOCK  -->
+  <div *ngIf="onCart" class="stock-position text-mute">
+    disponibles <span> {{product.stock}} </span>
+  </div>
   <mat-card-content>
     <!-- PRECIO -->
     <div class="flex-row">
@@ -27,7 +31,7 @@ cual pertenece y botón para agregar al carro de compras. -->
     </div>
     <!-- TITULO  -->
     <h4 class="card-title truncate-lines pointer">
-      <span *ngIf="onCart" class="font-20-b color-contrast-d">{{ quantity }} x &nbsp;</span>{{ product.nombre }}
+      <span *ngIf="onCart" class="font-20-b color-primary">{{ quantity }} x &nbsp;</span>{{ product.nombre }}
     </h4>
   </mat-card-content>
 </mat-card>
