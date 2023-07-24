@@ -1,16 +1,16 @@
 <!-- Nombre, imagen, precio (con el formateo a pesos correspondiente), subcategoría a la
 cual pertenece y botón para agregar al carro de compras. -->
-<p *ngIf="quantity > 0">Quantity: {{ quantity }}</p>
 <mat-card class="card mat-elevation-z2 txt-center">
+  <!-- CANTIDAD -->
+  <span class="quantity-position font-20-b" *ngIf="onCart"> x{{ quantity }} </span>
   <!-- SUBCATEGORÍA  -->
-  <div class="cat-info-position">
+  <div class="category-info-position">
     <span class="text-mute no-select" selected> {{product.categoryName}} </span>
   </div>
-
   <!-- BOTÓN CARRITO -->
   <div class="cart-position">
-    <button class="bg-primary mat-elevation-z1" *ngIf="showAddToCartButton" (click)="addToCart()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-      <mat-icon>add_shopping_cart</mat-icon>
+    <button class="bg-primary mat-elevation-z1" *ngIf="!onCart" (click)="addToCart()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon matBadge="{{ quantity }}" matBadgeColor="cw">add_shopping_cart</mat-icon>
     </button>
   </div>
   <!-- IMAGEN PRODUCTO -->
@@ -29,8 +29,4 @@ cual pertenece y botón para agregar al carro de compras. -->
      {{ product.nombre }}
     </h4>
   </mat-card-content>
-  <mat-card-actions>
-
-  </mat-card-actions>
-  <!--Card content-->
 </mat-card>

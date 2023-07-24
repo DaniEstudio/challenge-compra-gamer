@@ -10,7 +10,7 @@ import { ProductModel } from 'src/app/product-list/model/product.model';
 export class CardComponent implements OnInit {
   @Input() product: ProductModel;
   @Input() quantity: number;
-  @Input() showAddToCartButton: boolean = true;
+  @Input() onCart: boolean = false;
   public imgUrl: string = '';
 
   constructor(private cartService: CartService) { }
