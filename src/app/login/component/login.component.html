@@ -1,0 +1,20 @@
+<div>
+  <mat-card>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <app-input [type]="'text'" [placeholder]="'Name'" [control]="loginForm.get('name')"></app-input>
+
+      <app-input [type]="'text'" [placeholder]="'Lastname'" [control]="loginForm.get('lastname')"></app-input>
+
+      <app-input [type]="'number'" [placeholder]="'DNI'" [control]="loginForm.get('dni')"></app-input>
+      <mat-error *ngIf="showError && loginForm.get('dni').hasError('pattern')">Ingrese un número de DNI válido</mat-error>
+<br>
+      <app-input [type]="'email'" [placeholder]="'Email'" [control]="loginForm.get('email')"></app-input>
+      <mat-hint *ngIf="loginForm.get('email').hasError('email')">Mail inválido</mat-hint>
+<br>
+      <app-input [prefix]="'+54 9 011'" [type]="'number'" [placeholder]="'Ejemplo: 12345555'" [control]="loginForm.get('phoneNumber')"></app-input>
+      <mat-error *ngIf="showError && loginForm.get('phoneNumber').hasError('pattern')">Ingrese un número de telefono válido</mat-error>
+      <button type="submit">Submit</button>
+    </form>
+
+  </mat-card>
+</div>
