@@ -60,6 +60,15 @@ a {
   text-decoration: none;
 }
 
+.full-width {
+  width: 100%;
+}
+
+.form-button {
+  background: $primary;
+  color: $contrast-l;
+}
+
 .error-snackbar {
   background-color: $warn;
   color: $contrast-l;
