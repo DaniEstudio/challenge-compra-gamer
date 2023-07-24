@@ -12,6 +12,8 @@
     <a mat-icon-button aria-label="Example icon button with a vertical three dot icon" routerLink="/cart" (click)="resetFilter()">
       <mat-icon matBadge="{{ cartItemCount }}" matBadgeColor="warn">shopping_cart</mat-icon>
     </a>
+
+    <button mat-button routerLink="/login">Login</button>
   </mat-toolbar>
 
   <mat-expansion-panel [expanded]="isExpanded">
