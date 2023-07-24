@@ -1,6 +1,6 @@
-<div *ngFor="let cartItem of groupedCartItems">
+<div *ngFor="let product of cartProductList">
   <div class="container">
-    <app-card [product]="cartItem.product" [quantity]="cartItem.quantity" [onCart]="true"></app-card>
+    <app-card [product]="product.product" [quantity]="product.quantity" [onCart]="true"></app-card>
   </div>
 </div>
 

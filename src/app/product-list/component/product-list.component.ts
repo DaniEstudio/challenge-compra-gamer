@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.fetchProductData();
     this.subscribeToGroupId();
-    this.cartSubscription = this.cartService.getCartItemCount().subscribe(() => {
+    this.cartSubscription = this.cartService.getCartItemsCount().subscribe(() => {
       this.updateProductQuantities();
     });
   }
@@ -93,7 +93,7 @@ export class ProductListComponent implements OnInit {
   }
 
   private updateProductQuantities(): void {
-    const cartItems = this.cartService.getCartItems();
+    const cartItems = this.cartService.getCartList();
     this.cartItemCount = {};
 
     cartItems.forEach((cartItem) => {
