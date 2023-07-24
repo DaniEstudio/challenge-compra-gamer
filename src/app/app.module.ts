@@ -17,10 +17,13 @@ import { HeroComponent } from './shared/hero/component/hero.component';
 import { MedImagePipe } from './shared/pipe/med-image.pipe';
 import { PriceFormatPipe } from './shared/pipe/price-format.pipe';
 import { NotFoundComponent } from './shared/not-found/component/not-found.component';
+import { LoginComponent } from './login/component/login.component';
+import { InputComponent } from './shared/input/component/input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     NavbarComponent,
     ProductListComponent,
     CartListComponent,
@@ -29,7 +32,8 @@ import { NotFoundComponent } from './shared/not-found/component/not-found.compon
     MedImagePipe,
     PriceFormatPipe,
     HeroComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    InputComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,7 @@ import { NotFoundComponent } from './shared/not-found/component/not-found.compon
     HttpClientModule,
     SharedModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
