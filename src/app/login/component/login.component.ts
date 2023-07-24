@@ -36,7 +36,7 @@ export class LoginComponent {
         this.redirectTo('/product');
         this.showSnackbar(`Hola ${this.loginForm.value.name}!`, 'success-snackbar');
       } else {
-        this.showSnackbar('Por favor corrobore sus datos y vuelva a intentar', 'error-snackbar');
+        this.showSnackbar('Verifique que los datos ingresados sean correctos y vuelva a intentar', 'error-snackbar');
       }
     } else {
       this.showSnackbar('Todos los campos deben estar completos', 'error-snackbar');
