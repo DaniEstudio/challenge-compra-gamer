@@ -9,34 +9,22 @@ import { ProductModel } from 'src/app/product-list/model/product.model';
   styleUrls: ['./cart-list.component.scss']
 })
 export class CartListComponent implements OnInit {
-  private cartItems: CartItemModel[] = [];
-  public groupedCartItems: { product: ProductModel; quantity: number }[] = [];
+  public cartProductList: CartItemModel[] = [];
   public isEmpty: boolean = false;
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.getCartItems();
-    this.groupCartItems();
+    this.cartProductList = this.cartService.getCartList();
+    this.cartService.cartListUpdated.subscribe(() => {
+      this.cartProductList = this.cartService.getCartList();
+      this.validateList();
+    });
     this.validateList();
   }
 
-  private groupCartItems(): void {
-    const groupedItemsMap = this.cartItems.reduce((map, cartItem) => {
-      const productId = cartItem.product.id_producto;
-      const quantity = cartItem.quantity;
-      map.set(productId, (map.get(productId) || 0) + quantity);
-      return map;
-    }, new Map<number, number>());
-
-    this.groupedCartItems = Array.from(groupedItemsMap.entries()).map(([productId, quantity]) => {
-      const product = this.cartItems.find((item) => item.product.id_producto == productId)?.product;
-      return { product: product!, quantity };
-    });
-  }
-
   private validateList(): void {
-    this.isEmpty = this.groupedCartItems.length == 0;
+    this.isEmpty = this.cartProductList.length === 0;
   }
 }
 

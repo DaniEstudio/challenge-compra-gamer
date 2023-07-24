@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CartItemModel } from '../../cart/model/cart-item.model';
 import { ProductModel } from 'src/app/product-list/model/product.model';
@@ -7,35 +7,37 @@ import { ProductModel } from 'src/app/product-list/model/product.model';
   providedIn: 'root'
 })
 export class CartService {
-  private cartItems: CartItemModel[] = [];
-  private cartItemCount = new BehaviorSubject<number>(0);
+  private cartProductList: CartItemModel[] = [];
+  public cartListUpdated = new EventEmitter<any>();
   private totalItemCount = new BehaviorSubject<number>(0);
 
-  getCartItems() {
-    return this.cartItems;
+  getCartList() {
+    return this.cartProductList;
   }
 
-  getTotalCartItems() {
+  getCartItemsCount() {
     return this.totalItemCount.asObservable();
   }
 
-  getCartItemCount() {
-    return this.cartItemCount.asObservable();
-  }
-
   addToCart(product: ProductModel) {
-    const existingItem = this.cartItems.find(item => item.product.id_producto === product.id_producto);
-
-    if (existingItem) {
-      existingItem.quantity++; // If the product already exists in the cart, increment its quantity
-    } else {
-      this.cartItems.push({ product, quantity: 1 }); // If it's a new product, add it to the cart with quantity 1
-    }
+    const existingItem = this.cartProductList.find(item => item.product.id_producto == product.id_producto);
+    existingItem ?  existingItem.quantity++ :  this.cartProductList.push({ product, quantity: 1 });
 
     this.totalItemCount.next(this.totalItemCount.value + 1);
-    this.cartItemCount.next(this.cartItems.length);
+    this.cartListUpdated.emit();
   }
 
+  removeFromCart(product: ProductModel) {
+    const existingItemIndex = this.cartProductList.findIndex(item => item.product.id_producto == product.id_producto);
 
+    if (existingItemIndex !== -1) {
+      const existingItem = this.cartProductList[existingItemIndex];
+      existingItem.quantity > 1 ? existingItem.quantity-- :  this.cartProductList.splice(existingItemIndex, 1);
+    }
+
+    this.totalItemCount.next(this.totalItemCount.value - 1);
+    this.cartListUpdated.emit();
+  }
 }
+
 

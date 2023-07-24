@@ -15,13 +15,14 @@ export class CardComponent implements OnInit {
 
   constructor(private cartService: CartService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {  }
 
   addToCart() {
     this.cartService.addToCart(this.product);
   }
 
-
-
+  removeFromCart() {
+    this.cartService.removeFromCart(this.product);
+  }
 
 }
