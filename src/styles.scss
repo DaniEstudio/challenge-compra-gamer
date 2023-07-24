@@ -59,3 +59,15 @@ h1,h2,h3,h4,h5,h6 {
 a {
   text-decoration: none;
 }
+
+.error-snackbar {
+  background-color: $warn;
+  color: $contrast-l;
+  font-weight: 500;
+}
+
+.success-snackbar {
+  background-color: $primary;
+  color: $contrast-l;
+  font-weight: 500;
+}
