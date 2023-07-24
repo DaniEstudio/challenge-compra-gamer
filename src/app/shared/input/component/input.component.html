@@ -1,0 +1,5 @@
+<mat-form-field color="accent">
+  <span *ngIf="prefix" matPrefix>{{ prefix }}</span>
+  <input matInput [type]="type" [placeholder]="placeholder" [formControl]="control">
+</mat-form-field>
+
