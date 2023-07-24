@@ -10,8 +10,8 @@ cual pertenece y botón para agregar al carro de compras. -->
     <button  mat-icon-button *ngIf="!onCart" (click)="addToCart()" class="bg-primary mat-elevation-z1" aria-label="botón para agregar producto al carrito">
       <mat-icon matBadge="{{ quantity }}">add_shopping_cart</mat-icon>
     </button>
-    <button mat-icon-button *ngIf="onCart" (click)="removeFromCart()" class="bg-primary mat-elevation-z1" aria-label="botón para remover producto del carrito">
-      <mat-icon>remove</mat-icon>
+    <button mat-icon-button *ngIf="onCart" (click)="removeFromCart()" class="border bg-secondary mat-elevation-z1" aria-label="botón para remover producto del carrito">
+      <mat-icon>remove_shopping_cart</mat-icon>
     </button>
   </div>
   <!-- IMAGEN PRODUCTO -->
