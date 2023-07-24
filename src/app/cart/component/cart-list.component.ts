@@ -9,14 +9,16 @@ import { ProductModel } from 'src/app/product-list/model/product.model';
   styleUrls: ['./cart-list.component.scss']
 })
 export class CartListComponent implements OnInit {
-  cartItems: CartItemModel[] = [];
-  groupedCartItems: { product: ProductModel; quantity: number }[] = [];
+  private cartItems: CartItemModel[] = [];
+  public groupedCartItems: { product: ProductModel; quantity: number }[] = [];
+  public isEmpty: boolean = false;
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCartItems();
     this.groupCartItems();
+    this.validateList();
   }
 
   private groupCartItems(): void {
@@ -28,10 +30,13 @@ export class CartListComponent implements OnInit {
     }, new Map<number, number>());
 
     this.groupedCartItems = Array.from(groupedItemsMap.entries()).map(([productId, quantity]) => {
-      const product = this.cartItems.find((item) => item.product.id_producto === productId)?.product;
+      const product = this.cartItems.find((item) => item.product.id_producto == productId)?.product;
       return { product: product!, quantity };
     });
   }
 
+  private validateList(): void {
+    this.isEmpty = this.groupedCartItems.length == 0;
+  }
 }
 

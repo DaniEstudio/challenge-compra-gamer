@@ -1,5 +1,9 @@
 <div *ngFor="let cartItem of groupedCartItems">
   <div class="container">
-    <app-card [product]="cartItem.product" [quantity]="cartItem.quantity" [showAddToCartButton]="false"></app-card>
+    <app-card [product]="cartItem.product" [quantity]="cartItem.quantity" [onCart]="true"></app-card>
   </div>
+</div>
+
+<div *ngIf="isEmpty" class="message-container">
+  <p class="font-20-b color-contrast-d">Agrega productos al carrito para verlos aquí</p>
 </div>

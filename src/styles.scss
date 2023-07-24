@@ -22,6 +22,10 @@ $warn: #CB0A00;
   color: $warn;
 }
 
+.color-contrast-d {
+  color: $contrast-d;
+}
+
 .bg-primary {
   background:$primary-75;
   color: $contrast-l;
@@ -29,6 +33,11 @@ $warn: #CB0A00;
 
 h1,h2,h3,h4,h5,h6 {
   color: $contrast-d;
+}
+
+.font-20-b {
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .text-mute {
