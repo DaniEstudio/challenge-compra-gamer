@@ -6,10 +6,10 @@
         {{ 'keyboard_arrow_down' }}
       </mat-icon>
     </a>
-    <a mat-button routerLink="soon">Armá tu PC</a>
-    <a mat-button routerLink="soon">Ofertas!</a>
-    <a mat-button routerLink="soon">Ayuda</a>
-    <a mat-icon-button aria-label="Example icon button with a vertical three dot icon" routerLink="/cart">
+    <a mat-button routerLink="soon" (click)="resetFilter()">Armá tu PC</a>
+    <a mat-button routerLink="soon" (click)="resetFilter()">Ofertas!</a>
+    <a mat-button routerLink="soon" (click)="resetFilter()">Ayuda</a>
+    <a mat-icon-button aria-label="Example icon button with a vertical three dot icon" routerLink="/cart" (click)="resetFilter()">
       <mat-icon matBadge="{{ cartItemCount }}" matBadgeColor="warn">shopping_cart</mat-icon>
     </a>
   </mat-toolbar>
