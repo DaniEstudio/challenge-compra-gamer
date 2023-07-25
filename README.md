@@ -1,5 +1,13 @@
 # CompraGamer
 
+## Usar Login
+El login acepta datos del siguiente usuario predefinido:
+nombre : 'María';
+apellido : 'Gonzales';
+dni : '12345678';
+email : 'mg@gmail.com';
+numero de telefono : '11112222';
+
 ## Compatibilidad
 Asegurarse de tener las versiones de Node.js (v12.11.1) y Angular CLI (11.2.19) compatibles para poder instalar las dependencias y compilar el proyecto sin problemas.
 
