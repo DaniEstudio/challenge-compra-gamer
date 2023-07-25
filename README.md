@@ -1,6 +1,6 @@
 # CompraGamer
 
-## Usar Login
+## User Login
 El login acepta datos del siguiente usuario predefinido:
 nombre : 'María';
 apellido : 'Gonzales';
