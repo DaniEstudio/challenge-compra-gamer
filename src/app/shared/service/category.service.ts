@@ -30,5 +30,4 @@ export class CategoryService extends GenericInterceptor<CategoryModel[]>  {
     this.categoryImgURLSubject.next(imgName !== null ? this.IMG_BASE_URL + imgName : null);
   }
 
-
 }

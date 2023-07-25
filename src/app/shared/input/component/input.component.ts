@@ -11,13 +11,11 @@ export class InputComponent {
   @Input() placeholder: string = '';
   @Input() control: FormControl = new FormControl(null, Validators.required);
   @Input() prefix: string = '';
-  @Output() valueChanged: EventEmitter<string> = new EventEmitter<string>(); // Add output event
-
-  phonePattern: string = '^[0-9]*$';
+  @Output() valueChanged: EventEmitter<string> = new EventEmitter<string>();  phonePattern: string = '^[0-9]*$';
 
   onInput(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
-    this.valueChanged.emit(inputElement.value); // Emit the value when it changes
+    this.valueChanged.emit(inputElement.value);
   }
 }
 

@@ -86,7 +86,7 @@ export class ProductListComponent implements OnInit {
     }
 
     if (this.groupId) {
-      filteredList = filteredList.filter(product => product.id_subcategoria === this.groupId);
+      filteredList = filteredList.filter(product => product.id_subcategoria == this.groupId);
     }
 
     this.filteredProductList = filteredList;

@@ -9,18 +9,14 @@ export class AuthLoginService {
   private adminUser: AdminUser = new AdminUser();
 
   login(formData: FormGroup): boolean {
-    if (
-      formData.value.name === this.adminUser.name &&
-      formData.value.lastname === this.adminUser.lastname &&
-      formData.value.dni === this.adminUser.dni &&
-      formData.value.email === this.adminUser.email &&
-      formData.value.phoneNumber === this.adminUser.phoneNumber
-    ) {
+    const { name, lastname, dni, email, phoneNumber } = formData.value;
+    const isAdminUser = JSON.stringify({ name, lastname, dni, email, phoneNumber }) === JSON.stringify(this.adminUser);
+
+    if (isAdminUser) {
       sessionStorage.setItem('loggedInUser', JSON.stringify(this.adminUser));
-      return true;
-    } else {
-      return false;
     }
+
+    return isAdminUser;
   }
 
   isLoggedIn(): boolean {

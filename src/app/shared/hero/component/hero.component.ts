@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CategoryService } from '../../service/category.service';
 
@@ -8,7 +8,7 @@ import { CategoryService } from '../../service/category.service';
   styleUrls: ['./hero.component.scss'],
 })
 export class HeroComponent implements OnInit, OnDestroy {
-  public imgUrl: string | null = null; // Set imgUrl to null by default
+  public imgUrl: string | null = null;
   private imgUrlSubscription: Subscription;
 
   constructor(private categoryService: CategoryService) {}

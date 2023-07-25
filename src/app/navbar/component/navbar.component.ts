@@ -40,6 +40,7 @@ export class NavbarComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         this.isExpanded = false;
+        this.resetFilter();
       }
     });
   }

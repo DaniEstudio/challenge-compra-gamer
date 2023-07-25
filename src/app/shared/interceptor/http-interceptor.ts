@@ -32,7 +32,7 @@ export class GenericInterceptor<T> implements HttpInterceptor {
   }
 
   protected handleHttpError(error: HttpErrorResponse): void {
-    this.snackBar.open('Ups! ha ocurrido un error', 'Close', {
+    this.snackBar.open(`Ups! ha ocurrido un error ${error}`, 'Close', {
       duration: 5000,
     });
   }
